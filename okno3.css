@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #180a05; /* тёмно-шоколадный фон */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Фото в левом верхнем углу */
+.corner-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 650px;   /* уменьшено вдвое */
+  height: 512px;
+}
+
+/* Текст */
+.special-text {
+  margin-top: 20vh;
+  text-align: center;
+  width: 150%;
+}
+
+.special-text p {
+  font-family: "Dancing Script", cursive;
+  font-size: 7em;
+  color: #fff;
+  margin: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+/* Сердечки */
+.hearts {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  gap: 150px; /* расстояние между сердечками */
+}
+
+.heart {
+  width: 16em;
+  height: 16em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); opacity: 1; }
+  25%  { transform: scale(1.1); opacity: 0.9; }
+  50%  { transform: scale(1); opacity: 1; }
+  75%  { transform: scale(1.1); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.heart {
+  width: 15em;
+  height: 15em;
+  cursor: pointer;
+  transition: transform 0.3s;
+  animation: heartbeat 1.5s infinite; /* бесконечная анимация */
+}
+.heart:nth-child(1) { animation-delay: 0s; }
+.heart:nth-child(2) { animation-delay: 0.3s; }
+.heart:nth-child(3) { animation-delay: 0.6s; }
+.heart:nth-child(4) { animation-delay: 0.9s; }
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.back-button-container {
+  position: fixed;        /* фиксируем внизу экрана */
+  bottom: 30px;           /* отступ от нижнего края */
+  left: 50%;              /* центрируем по горизонтали */
+  transform: translateX(-50%);
+}
+
+.back-button {
+  padding: 10px 30px;
+  font-size: 1.2em;
+  font-family: "Dancing Script", cursive;
+  background-color: rgba(255, 255, 255, 0.2); /* полупрозрачный фон */
+  color: #ddd;                                /* светло-серый текст */
+  border: 1px solid #aaa;                     /* тонкая рамка */
+  border-radius: 12px;                        /* округлённые углы */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* чуть ярче при наведении */
+  transform: scale(1.05);
+}

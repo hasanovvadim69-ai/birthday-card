@@ -1,0 +1,275 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #180a05; /* chocolate background */
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left img {
+  max-width: 70%;
+  height: auto;
+  position: relative;
+  left: 40px; /* сдвиг вправо */
+}
+
+.right {
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.text-overlay {
+ position: relative;
+  top: 0px;
+  color: #fff;
+  font-family: "Dancing Script", cursive;
+
+}
+
+.text-overlay h1 {
+  font-size: 8em;
+  margin: 0;
+  font-weight: 700;
+}
+
+.text-overlay p {
+  font-size: 2em;
+  margin: 0;
+  font-weight: 400;
+}
+.ribbon {
+  position: relative;
+  margin-top: 10px;   /* отступ сверху */
+  width: 600px;       /* ширина ленты */
+  height: 200px;       /* высота автоматически */
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* центрируем под текстом */
+  top: -50px;
+}
+.extra-text {
+  position: relative;
+  margin-top: 10px;
+  font-size: 0,5em;
+  font-family: "Dancing Script", cursive; /* применяем тот же красивый шрифт */
+  color: #fff;
+  top: -30px;
+}
+
+.buttons {
+  position: relative;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 350px; /* расстояние между кнопками */
+}
+
+.buttons button {
+  padding: 12px 30px;
+  font-size: 2.5em;
+  background-color: #fff;
+  color: #4B2C20;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+}
+
+/* затемнение заднего фона */
+.modal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7); /* полупрозрачное затемнение */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 256px;
+  background-color: #000;
+  border: 2px solid #000;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* содержимое сверху */
+  align-items: center;
+  overflow: hidden;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;   /* картинка заполняет контейнер */
+  border-radius: 12px;
+}
+
+/* текст без анимации */
+.modal-content p {
+  color: #fff;
+  font-size: 1.5em;
+  font-family: "Dancing Script", cursive;
+  margin: 10px 0;
+  opacity: 1;          /* сразу виден */
+  transform: none;     /* убираем эффекты */
+}
+.modal-content p.instant-text {
+  color: #fff;
+  font-size: 1.5em;
+  font-family: "Dancing Script", cursive;
+  margin: 10px 0;
+  opacity: 1 !important;       /* всегда видно */
+  animation: none !important;  /* отключаем анимацию */
+  transform: none !important;  /* убираем эффекты */
+}
+
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Анимация для торта */
+.left img {
+  max-width: 70%;
+  height: auto;
+  position: relative;
+  left: 40px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards; /* плавное появление */
+  animation-delay: 0.5s; /* задержка */
+}
+
+/* Анимация для текста */
+.text-overlay h1, 
+.text-overlay p {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.text-overlay h1:nth-child(1) { animation-delay: 1s; }
+.text-overlay h1:nth-child(2) { animation-delay: 1.5s; }
+.text-overlay p { animation-delay: 2s; }
+
+/* Анимация для ленты */
+.ribbon {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 2.5s;
+}
+
+/* Анимация для дополнительного текста */
+.extra-text {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+  animation-delay: 3s;
+}
+
+/* Анимация для кнопок */
+.buttons button {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.btn-yes { animation-delay: 3.5s; }
+.btn-no { animation-delay: 4s; }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease; /* плавное появление/исчезновение */
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  width: 256px;
+  height: 380px;
+  background-color: #000;
+  border: 2px solid #000;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: transform 0.5s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+.modal-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 40px;
+}
+
+.modal-content p {
+  color: #fff;
+  font-size: 1.5em;
+  font-family: "Dancing Script", cursive;
+  margin: 0;
+  position: relative;
+  top: -5px;
+}
+@keyframes blink {
+  0%   { opacity: 1; transform: scale(1); }
+  50%  { opacity: 0.6; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.buttons button {
+  padding: 12px 30px;
+  font-size: 2.5em;
+  background-color: #fff;
+  color: #4B2C20;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  animation: blink 1.5s infinite; /* бесконечное подмигивание */
+}
+/* плавное исчезновение */
+body {
+  transition: opacity 1s ease, background-color 1s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+  background-color: #000; /* растворение в чёрный фон */
+}

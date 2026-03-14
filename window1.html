@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Фотоальбом</title>
+  <link rel="stylesheet" href="window1.css">
+</head>
+<body>
+  <div class="photo-window">
+    <!-- Заголовок -->
+    <div class="title-row">
+  <h1 class="birthday-title">Happy 19th Birthday!</h1>
+  <img src="gifka.gif" alt="Праздничная гифка" class="birthday-gif">
+</div>
+
+    <!-- Галерея -->
+    <div class="photo-gallery">
+      <!-- Первый ряд: 4 фото -->
+      <div class="row">
+        <img src="ramka1.jpg" alt="Фото 1" class="photo-frame">
+        <img src="ramka2.jpg" alt="Фото 2" class="photo-frame">
+        <img src="ramka3.jpg" alt="Фото 3" class="photo-frame">
+        <img src="ramka4.jpg" alt="Фото 4" class="photo-frame">
+      </div>
+
+      <!-- Второй ряд: 5 фото -->
+      <div class="row">
+        <img src="ramka5.jpg" alt="Фото 5" class="photo-frame">
+        <img src="ramka6.jpg" alt="Фото 6" class="photo-frame">
+        <img src="ramka7.jpg" alt="Фото 7" class="photo-frame">
+        <img src="ramka8.jpg" alt="Фото 8" class="photo-frame">
+        <img src="ramka9.jpg" alt="Фото 9" class="photo-frame">
+      </div>
+    </div>
+  </div>
+
+<div class="sparkles"></div>
+
+<script>
+const sparklesContainer = document.querySelector('.sparkles');
+
+function createSparkle() {
+  const sparkle = document.createElement('div');
+  sparkle.classList.add('sparkle');
+  
+  // случайная позиция и размер
+  sparkle.style.left = Math.random() * window.innerWidth + 'px';
+  sparkle.style.width = sparkle.style.height = (Math.random() * 6 + 4) + 'px';
+  
+  sparklesContainer.appendChild(sparkle);
+
+  // удалить после анимации
+  setTimeout(() => {
+    sparkle.remove();
+  }, 5000);
+}
+
+// запуск блёсток каждые 500 мс
+setInterval(createSparkle, 500);
+</script>
+<div class="back-button">
+  <a href="okno3.html">← Назад</a>
+</div>
+
+
+
+</body>
+
+</html>

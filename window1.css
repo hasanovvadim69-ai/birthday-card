@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #180a05; /* фон */
+  font-family: "Dancing Script", cursive;
+  color: #fff;
+  display: flex;
+  justify-content: center;   /* центрируем по горизонтали */
+  align-items: center;       /* центрируем по вертикали */
+  min-height: 100vh;
+  flex-direction: column;
+}
+.title-row {
+  display: flex;
+  align-items: center;      /* выравниваем по вертикали */
+  justify-content: center;  /* центрируем по горизонтали */
+  gap: 15px;                /* расстояние между текстом и гифкой */
+  margin: 40px auto;
+}
+
+.birthday-title {
+  font-size: 6em;
+  margin: 0;                /* убираем лишние отступы */
+  animation: fadeInText 2s ease forwards;
+}
+
+.birthday-gif {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+
+}
+
+.photo-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 25px; /* отступ между рядами */
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  column-gap: 60px; /* отступ между рамками */
+}
+
+.photo-frame {
+  width: 250px;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin: 0;
+  display: block;
+  opacity: 0; /* начальное состояние */
+  animation: fadeInPhoto 1.5s ease forwards;
+  animation-fill-mode: forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* плавный переход */
+  
+}
+
+/* Анимация при наведении */
+.photo-frame:hover {
+  transform: scale(1.05); /* увеличение */
+
+}
+
+
+/* Задержки для поочерёдного появления фото */
+.row:first-child .photo-frame:nth-child(1) { animation-delay: 2s; }
+.row:first-child .photo-frame:nth-child(2) { animation-delay: 2.5s; }
+.row:first-child .photo-frame:nth-child(3) { animation-delay: 3s; }
+.row:first-child .photo-frame:nth-child(4) { animation-delay: 3.5s; }
+
+.row:last-child .photo-frame:nth-child(1) { animation-delay: 4s; }
+.row:last-child .photo-frame:nth-child(2) { animation-delay: 4.5s; }
+.row:last-child .photo-frame:nth-child(3) { animation-delay: 5s; }
+.row:last-child .photo-frame:nth-child(4) { animation-delay: 5.5s; }
+.row:last-child .photo-frame:nth-child(5) { animation-delay: 6s; }
+
+
+/* Анимации */
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInPhoto {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.sparkles {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* блёстки не мешают кликам */
+  z-index: 0;           /* фон ниже фото */
+}
+
+
+.sparkle {
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #fff 0%, #ffccff 70%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: floatUp 5s linear forwards;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: 0.8; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+.back-button {
+  margin-top: auto;       /* прижимает вниз */
+  margin-bottom: 20px;    /* отступ от нижнего края */
+}
+
+.back-button a {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ffcc99;
+  color: #180a05;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 200, 150, 0.8);
+}

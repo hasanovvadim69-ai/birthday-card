@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>PIN-код окно</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="main-wrapper">
+  <!-- Маленький box сверху -->
+  <div class="small-box">
+    <div class="hint-wrapper">
+      <button class="hint-btn">!</button>
+      <div class="hint-message">Подсказка: Паролем являеться дата рождения пользователя: дд:мм:гггг☺️ </div>
+    </div>
+  </div>
+
+    <!-- Основное окно -->
+    <div class="pin-container">
+      <!-- Фото слева -->
+      <div class="photo">
+        <img src="photo.jpg" alt="Фото" />
+      </div>
+
+      <!-- Блок ввода -->
+      <div class="pin-box">
+        <input type="text" id="pin-input" readonly placeholder="Введите PIN" />
+
+        <div class="keypad">
+          <!-- Кнопки 3x4 -->
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+          <button class="back">←</button>
+          <button>0</button>
+          <button class="ok">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <canvas id="lights"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>

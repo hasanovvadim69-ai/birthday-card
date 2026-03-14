@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #0d0d0d; /* тёмный фон */
+  display: flex;
+  justify-content: center;   /* центрируем по вертикали */
+  align-items: center;       /* центрируем по горизонтали */
+  flex-direction: column;
+  color: #fff;
+  font-family: "Dancing Script", cursive;
+  transition: opacity 1s ease, background-color 1s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+  background-color: #000;
+}
+
+.video-container {
+  text-align: center;
+}
+
+.video-container h1 {
+  font-size: 3em;            /* увеличил размер надписи */
+  margin-bottom: 30px;
+  animation: fadeIn 2s ease forwards;
+}
+/* Логотип в верхнем правом углу как фон */
+.winx-logo-fixed {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  opacity: 0.7;              /* лёгкая прозрачность, чтобы не мешал */
+  pointer-events: none;      /* отключаем взаимодействие, чтобы не мешал кнопкам */
+  animation: fadeIn 2s ease forwards, pulse 3s infinite alternate;
+  z-index: -1;               /* отправляем на задний фон */
+}
+
+.title-with-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  animation: fadeIn 2s ease forwards;
+}
+
+.photo-film {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 15%;
+  animation: fadeIn 2s ease forwards;
+}
+
+.magic-text {
+  font-size: 1.8em;
+  margin-top: 20px;
+  font-family: "Dancing Script", cursive;
+  color: #ffccff;
+  animation: fadeIn 2s ease forwards, glowText 3s infinite alternate;
+}
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 10px #ff99cc; }
+  to   { text-shadow: 0 0 20px #cc66ff; }
+}
+
+
+video {
+  width: 90%;
+  max-width: 900px;
+  border: 5px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.5);
+  animation: glow 3s infinite alternate;
+}
+
+/* плавное появление */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* свечение экрана */
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+  to   { box-shadow: 0 0 40px rgba(255,255,255,0.7); }
+}
+
+/* плавные переходы */
+body {
+  transition: opacity 1s ease, background-color 1s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+  background-color: #000; /* растворение в чёрный фон */
+}
+
+.back-button-container {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.back-button {
+  padding: 10px 30px;
+  font-size: 1.2em;
+  font-family: "Dancing Script", cursive;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ddd;
+  border: 1px solid #aaa;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;       /* отправляем на задний фон */
+  background: #0d0d0d; /* тёмный фон */
+}

@@ -1,0 +1,265 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #250f07;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color:#fff3e0;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Маленький box */
+.small-box {
+  width: 760px;
+  height: 80px;
+
+  background: rgba(59, 32, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInSmall 1s forwards;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.hint-wrapper {
+  position: relative;
+}
+
+.hint-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #e6c79c;
+  color: #3b2014;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hint-btn:hover {
+  background: #d9b382;
+  transform: scale(1.05);
+}
+
+.hint-message {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: #e6c79c;
+  color:#3b2014;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+/* Основное окно */
+.pin-container {
+  display: flex;
+
+  background: rgba(59, 32, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+
+  width: 700px;
+  padding: 30px;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInMain 1s forwards;
+}
+
+@keyframes fadeInMain {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSmall {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.photo img{
+
+width:250px;
+height:250px;
+
+border-radius:50%;
+object-fit:cover;
+
+border:4px solid #e6c79c;
+
+box-shadow:
+0 0 20px rgba(255,200,140,0.8),
+0 0 40px rgba(255,200,140,0.5),
+0 0 80px rgba(255,200,140,0.3);
+
+animation: glowPulse 3s infinite alternate;
+
+}@keyframes glowPulse{
+
+0%{
+box-shadow:
+0 0 15px rgba(255,200,140,0.6),
+0 0 30px rgba(255,200,140,0.4);
+}
+
+100%{
+box-shadow:
+0 0 30px rgba(255,200,140,0.9),
+0 0 60px rgba(255,200,140,0.6);
+}
+
+}
+
+.pin-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pin-input {
+
+width: 250px;
+font-size: 22px;
+text-align: center;
+
+margin-bottom: 18px;
+padding: 12px;
+
+border-radius: 10px;
+
+background: rgba(255,255,255,0.9);
+
+border: 2px solid #c98a4a;
+
+box-shadow:
+inset 0 2px 6px rgba(0,0,0,0.2),
+0 0 8px rgba(255,200,120,0.2);
+
+color: #3b2014;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-gap: 12px;
+}
+
+.keypad button {
+
+  font-size: 20px;
+  padding: 18px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(145deg,#f3d4a7,#d9b382);
+
+  color: #3b2014;
+
+  cursor: pointer;
+
+  box-shadow:
+  0 4px 8px rgba(0,0,0,0.4),
+  inset 0 1px 2px rgba(255,255,255,0.5);
+
+  transition: all 0.15s;
+}
+
+.keypad button:hover {
+
+  box-shadow:
+  0 0 12px rgba(255,210,140,0.7),
+  0 4px 12px rgba(0,0,0,0.6);
+
+  transform: translateY(-2px);
+}
+
+.keypad button:active {
+
+  transform: scale(0.92);
+
+  box-shadow:
+  inset 0 4px 8px rgba(0,0,0,0.5);
+}
+/* специальные кнопки */
+
+.keypad .ok,
+.keypad .back {
+
+background: linear-gradient(145deg,#c98a4a,#a96c30);
+color:white;
+}
+
+.keypad .ok:hover,
+.keypad .back:hover {
+
+box-shadow:
+0 0 14px rgba(255,170,90,0.8),
+0 4px 12px rgba(0,0,0,0.6);
+}
+
+/* анимация исчезновения */
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+.fade-out-delay {
+  animation: fadeOut 1s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}#lights{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
